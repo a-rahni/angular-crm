@@ -7,7 +7,10 @@ import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  //imports: [BrowserModule, AppRoutingModule, CoreModule], // avec cette ordre tout les module charger au demarrage seront placé après
+  // le path ** (l'ordre des import) --> ne seront pas prises en compte (reirigé vers page not found).
+  //pour les lazy module pas de pb, ils auront déja leur emplacement dans la tab routing
+  imports: [BrowserModule, CoreModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
