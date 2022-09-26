@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   public version!: number;
   constructor(private versionService: VersionService) {
     this.versionService.numVersion.subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.version = data;
     });
   }

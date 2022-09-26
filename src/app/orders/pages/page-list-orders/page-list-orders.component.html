@@ -1,1 +1,5 @@
-<p>page-list-orders works!</p>
+<!-- <app-template-full-width title="list of orders"> -->
+<!-- property bindin : []  binder la propriete title de order a l'input de template title-->
+<app-template-full-width [title]="this.title">
+  <button (click)="changeTitle()">Change title</button>
+</app-template-full-width>

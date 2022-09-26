@@ -14,8 +14,8 @@ export class VersionService {
   }
 
   public incrementVersion() {
-    console.log(this.numVersion); // affiche tout l'objet observable avec les propriete
-    console.log(this.numVersion.value);
+    // console.log(this.numVersion); // affiche tout l'objet observable avec les propriete
+    // console.log(this.numVersion.value);
     this.numVersion.next(this.numVersion.value + 1);
   }
 }
