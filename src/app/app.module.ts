@@ -20,13 +20,12 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 })
 export class AppModule {
   // tests observables, subjects and behaviorSusbject
-  private obs = new Observable((listXsubscribe) => {
-    listXsubscribe.next(Math.random());
-  });
+  //private obs = new Observable((listXsubscribe) => {
+  //  listXsubscribe.next(Math.random());
+  //});
 
-  private subj = new Subject();
-
-  private behave = new BehaviorSubject(0);
+  //private subj = new Subject();
+  //private behave = new BehaviorSubject(0);
 
   constructor() {
     // console.log('**** observable ***');
