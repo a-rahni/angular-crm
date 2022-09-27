@@ -15,7 +15,11 @@ ca evite de declencher les changeDetection inutile  -->
       <td>{{ item.tjmHt |currency }}</td>
       <td>{{(item.nbJours |total : item.tjmHt |currency) }}</td>
       <td>{{(item.nbJours |total : item.tjmHt : item.tva |currency) }}</td>
-      <td>
+      <td [ngClass]="{
+        'state-canceled': item.state === 'CANCELED',
+        'state-confirmed': item.state === 'CONFIRMED',
+        'state-option': item.state === 'OPTION'
+        }">
         <!-- pour recuperer la valeur de l option suite a un changement on utilise un $event (mot clé Angular)
         qui contient des attribut dont value-->
         <select (change)="changeState(item,$event)">
@@ -37,6 +41,7 @@ ca evite de declencher les changeDetection inutile  -->
     </tr>
 
   </app-table-light>
-  <app-btn label="add order" route="add"> </app-btn>
+  <!-- <app-btn label="add order" route="add"> </app-btn> -->
+  <app-btn [label]="label" [route]="route"> </app-btn>
 
 </app-template-full-width>
