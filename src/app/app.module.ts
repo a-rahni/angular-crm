@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -8,6 +8,9 @@ import { CoreModule } from './core/core.module';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +18,10 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
   // le path ** (l'ordre des import) --> ne seront pas prises en compte (reirigé vers page not found).
   //pour les lazy module pas de pb, ils auront déja leur emplacement dans la tab routing
   imports: [BrowserModule, CoreModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

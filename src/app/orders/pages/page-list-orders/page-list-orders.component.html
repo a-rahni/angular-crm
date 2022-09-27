@@ -1,5 +1,42 @@
 <!-- <app-template-full-width title="list of orders"> -->
 <!-- property bindin : []  binder la propriete title de order a l'input de template title-->
-<app-template-full-width [title]="this.title">
-  <button (click)="changeTitle()">Change title</button>
+<!-- le If pour eviter de creer la table tanque on a pas recuperer la collection (async)
+ca evite de declencher les changeDetection inutile  -->
+<!-- <app-template-full-width [title]="this.title" *ngIf="collection"> -->
+<app-template-full-width [title]="this.title" *ngIf="collection$ |async as collection">
+  <!-- <button (click)="changeTitle()">Change title</button> -->
+
+  <app-table-light [headers]="headers">
+    <!-- <pre>{{ collection |json }}</pre> -->
+    <tr *ngFor="let item of collection">
+      <td>{{ item.typePresta }}</td>
+      <td>{{ item.client }}</td>
+      <td>{{ item.nbJours }}</td>
+      <td>{{ item.tjmHt |currency }}</td>
+      <td>{{(item.nbJours |total : item.tjmHt |currency) }}</td>
+      <td>{{(item.nbJours |total : item.tjmHt : item.tva |currency) }}</td>
+      <td>
+        <!-- pour recuperer la valeur de l option suite a un changement on utilise un $event (mot clé Angular)
+        qui contient des attribut dont value-->
+        <select (change)="changeState(item,$event)">
+          <option *ngFor="let state of states" [value]="state" [selected]="state===item.state">
+            {{state}}
+          </option>
+        </select>
+      </td>
+
+      <!-- <td>{{ item.state }}</td> -->
+      <!-- <td>Total HT</td> -->
+      <!-- <td>{{item.nbJours * item.tjmHt }}</td> -->
+      <!-- <td>{{total(item.nbJours, item.tjmHt) }}</td> -->
+      <!-- <td>Total TTC</td> -->
+      <!-- <td>{{total(item.nbJours, item.tjmHt, item.tva) }}</td> -->
+
+      <!-- eviter les focntion dans html, la focntion total ser appeler 4 fois ou plus ce su'il faut  a cause de l'interpollation
+      angular propose les pipe-->
+    </tr>
+
+  </app-table-light>
+  <app-btn label="add order" route="add"> </app-btn>
+
 </app-template-full-width>

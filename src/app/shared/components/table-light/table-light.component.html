@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers">
+        {{header}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- tous ce qui ajouter entre les balise app-table-light sera injecté ici (pas besoin de selector) -->
+    <ng-content></ng-content>
+
+    <!-- non reutilisable : on utilise des attributs sepecifique
+    il faut injecter toute la table depuis le parent -->
+
+    <!-- <tr *ngFor="let item of collection">
+      <td>{{ item.typePresta }}</td>
+      <td>{{ item.client }}</td>
+      <td>{{ item.nbJours }}</td>
+      <td>{{ item.tjmHt }}</td>
+      <td>Total HT</td>
+      <td>Total TTC</td>
+      <td>{{ item.state }}</td>
+    </tr> -->
+
+  </tbody>
+</table>
