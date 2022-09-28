@@ -29,15 +29,14 @@ ca evite de declencher les changeDetection inutile  -->
         </select>
       </td>
 
-      <!-- <td>{{ item.state }}</td> -->
-      <!-- <td>Total HT</td> -->
-      <!-- <td>{{item.nbJours * item.tjmHt }}</td> -->
-      <!-- <td>{{total(item.nbJours, item.tjmHt) }}</td> -->
-      <!-- <td>Total TTC</td> -->
-      <!-- <td>{{total(item.nbJours, item.tjmHt, item.tva) }}</td> -->
+      <td>
+        <!-- <span onclick="goToEdit(item.id)"> -->
+        <!-- <span routerLink='edit/{{item.id}}' onclick="goToEdit(item)"> -->
+        <span routerLink='edit/{{item.id}}'>
+          <app-icon-edit></app-icon-edit>
+        </span>
+      </td>
 
-      <!-- eviter les focntion dans html, la focntion total ser appeler 4 fois ou plus ce su'il faut  a cause de l'interpollation
-      angular propose les pipe-->
     </tr>
 
   </app-table-light>
@@ -45,3 +44,14 @@ ca evite de declencher les changeDetection inutile  -->
   <app-btn [label]="label" [route]="route"> </app-btn>
 
 </app-template-full-width>
+
+
+<!-- <td>{{ item.state }}</td> -->
+<!-- <td>Total HT</td> -->
+<!-- <td>{{item.nbJours * item.tjmHt }}</td> -->
+<!-- <td>{{total(item.nbJours, item.tjmHt) }}</td> -->
+<!-- <td>Total TTC</td> -->
+<!-- <td>{{total(item.nbJours, item.tjmHt, item.tva) }}</td> -->
+
+<!-- eviter les focntion dans html, la focntion total ser appeler 4 fois ou plus ce su'il faut  a cause de l'interpollation
+      angular propose les pipe-->
